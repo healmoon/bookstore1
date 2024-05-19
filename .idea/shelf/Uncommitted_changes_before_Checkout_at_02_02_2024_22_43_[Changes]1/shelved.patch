@@ -1,0 +1,2 @@
+diff --git a/bookstore1/app/infra/storage/sqlite_storage.py b/bookstore1/app/infra/storage/sqlite_storage.py
+new file mode 100644
