@@ -1,0 +1,37 @@
+Index: bookstore1/app/domain/book.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import datetime\r\n\r\nfrom abc import abstractmethod\r\nfrom dataclasses import dataclass\r\n\r\n\r\n@dataclass\r\nclass Book:\r\n    title: str\r\n    description: str\r\n    publish_year: int\r\n    pages_count: int\r\n    created_at: datetime.datetime\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/bookstore1/app/domain/book.py b/bookstore1/app/domain/book.py
+--- a/bookstore1/app/domain/book.py	
++++ b/bookstore1/app/domain/book.py	
+@@ -1,13 +1,16 @@
+-import datetime
++from datetime import datetime
++from flask_sqlalchemy import SQLAlchemy
+ 
+-from abc import abstractmethod
+-from dataclasses import dataclass
++db = SQLAlchemy()
+ 
+ 
+-@dataclass
+-class Book:
+-    title: str
+-    description: str
+-    publish_year: int
+-    pages_count: int
+-    created_at: datetime.datetime
++class Book(db.Model):
++    id = db.Column(db.Integer, primary_key=True)
++    title = db.Column(db.String(100), nullable=False)
++    description = db.Column(db.String(255), nullable=True)
++    publish_year = db.Column(db.Integer, nullable=True, default=None)
++    pages_count = db.Column(db.Integer, nullable=False)
++    created_at = db.Column(db.DateTime, default=datetime.utcnow())
++
++    def __repr__(self):
++        return f'<Book {self.id}:{self.title}>'
