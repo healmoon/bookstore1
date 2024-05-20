@@ -11,7 +11,7 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 
-
+"""sqlite база с объявленными функциями"""
 class SqliteStorage:
     def __init__(self, db_path):
         self.engine = create_engine('sqlite:///' + db_path)
