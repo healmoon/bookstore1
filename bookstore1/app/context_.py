@@ -4,7 +4,7 @@ from application.book_service import BookService
 # from infra.storage.mem_storage import MemoryStorage
 from infra.storage.sqlite_storage import SqliteStorage
 
-
+"""класс контекста"""
 class Context_:
     def __init__(self):
         book_storage = SqliteStorage('bookstore1.db')
