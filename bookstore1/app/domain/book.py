@@ -3,7 +3,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from infra.storage.sqlite_storage import db
 
-
+"""объявление класса книга с неоходимыми параметрами"""
 class Book(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     title: Mapped[str] = mapped_column(String, unique=True)
