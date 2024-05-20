@@ -5,7 +5,7 @@ from infra.storage.sqlite_storage import db
 from views.book import bp as book_bp
 from context_ import Context_
 
-
+"""класс создания приложения"""
 def create_app():
     app = Flask(__name__)
     app.register_blueprint(book_bp, url_prefix="/books")
