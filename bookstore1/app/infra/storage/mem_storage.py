@@ -1,6 +1,6 @@
 from bookstore1.app.domain.book import Book
 
-
+"""хранилище мемов с добавлением, удалением и получением"""
 class MemoryStorage:
     def __init__(self):
         self.books = []
