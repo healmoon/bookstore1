@@ -1,3 +1,4 @@
+"""класс книжного сервиса с добавлением, удалением , получением всего списка и получением по id"""
 class BookService:
     def __init__(self, storage):
         self.storage = storage
