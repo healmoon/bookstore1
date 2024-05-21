@@ -11,9 +11,9 @@ from views.book_shema import Book_Schema
 
 bp = Blueprint("book", __name__)
 
-"""получение списка книг"""
 @bp.route("/")
 def get_books():
+    """получение списка книг"""
     ctx = get_context(current_app)
     books = ctx.book_service.get_all()
     response = make_response(Book_Schema(many=True).dump(books))
@@ -21,9 +21,9 @@ def get_books():
 
     return response, 200
 
-"""добавление книги"""
 @bp.route("/", methods=["POST"])
 def add_book():
+    """добавление книги"""
     ctx = get_context(current_app)
     try:
         book_data = Book_Schema().load(request.json)
@@ -42,9 +42,9 @@ def add_book():
     response.headers['Content-Type'] = 'application/json'
     return response, 201
 
-"""удаление книги"""
 @bp.route("/<id>", methods=["DELETE"])
 def delete_book(id):
+    """удаление книги"""
     ctx = get_context(current_app)
 
     ctx.book_service.delete(id)
@@ -52,9 +52,9 @@ def delete_book(id):
     response.headers['Content-Type'] = 'application/json'
     return response
 
-"""удаление по id"""
 @bp.route("/<id>")
 def get_book_by_id(id):
+    """удаление по id"""
     ctx = get_context(current_app)
 
     book = ctx.book_service.get_book_by_id(id)
